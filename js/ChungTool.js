@@ -2,7 +2,7 @@ var ChungTool = ChungTool || {};
 var simpleShow = simpleShow || {};
 var simpleHide = simpleHide || {};
 
-(function() {
+(function () {
 
 
 
@@ -32,7 +32,7 @@ var simpleHide = simpleHide || {};
 
     function isOnline() {
         if (window.location.protocol == 'file:') {
-            console.log('在本機端喔');
+            // console.log('在本機端喔');
             return false;
         } else {
             return true;
@@ -43,7 +43,7 @@ var simpleHide = simpleHide || {};
         if (isNull(during)) {
             during = 0.3;
         }
-        el.each(function() {
+        el.each(function () {
             var t = $(this);
             t.removeClass('hide');
             TweenMax.killTweensOf(t);
@@ -61,26 +61,26 @@ var simpleHide = simpleHide || {};
         if (isNull(during)) {
             during = 0.3;
         }
-        el.each(function() {
-                var t = $(this);
-                var tl = new TimelineMax();
-                TweenMax.killTweensOf(t);
-                tl.to(t, during, {
-                        autoAlpha: 0
-                    })
-                    .call(function() {
-                        t.addClass('hide');
-                    });
-            })
-            // console.log(123)
+        el.each(function () {
+            var t = $(this);
+            var tl = new TimelineMax();
+            TweenMax.killTweensOf(t);
+            tl.to(t, during, {
+                    autoAlpha: 0
+                })
+                .call(function () {
+                    t.addClass('hide');
+                });
+        })
+        // console.log(123)
     }
 
     function isNull(val) {
-        return (typeof(val) === "undefined")
+        return (typeof (val) === "undefined")
     }
 
     function initLimitText() {
-        $('.limitTxt').each(function() {
+        $('.limitTxt').each(function () {
             var t = $(this);
             var limitNum = parseInt(t.attr('data-limitTxtNum'), 10);
             var showBtn = (t.attr('data-showBtn') == 'true') ? true : false;
@@ -105,7 +105,7 @@ var simpleHide = simpleHide || {};
             }
         });
 
-        $('.seeMoreContentBtn').on('click', function(e) {
+        $('.seeMoreContentBtn').on('click', function (e) {
             e.preventDefault();
             $(this).addClass('hide').siblings('.hide').removeClass('hide').siblings('.dot').addClass('hide');
         });
@@ -126,7 +126,7 @@ var simpleHide = simpleHide || {};
                 return false;
             } //單點觸控
 
-            console.log(123);
+            // console.log(123);
             start_x = event.targetTouches[0].pageX;
             //alert(start_x);
         }
@@ -156,25 +156,30 @@ var simpleHide = simpleHide || {};
 
 
     /* 清除以prefix開頭的所有class*/
-    function removeClassWithFilter(elemt, prefix) {
-        elemt.each(function(i, el) {
-            var classes = el.className.split(" ").filter(function(c) {
+    function removeClassWithFilter(elemt, prefix, additionalClass) {
+        additionalClass = "" || additionalClass;
+        elemt.each(function (i, el) {
+            var classes = el.className.split(" ").filter(function (c) {
                 return c.lastIndexOf(prefix, 0) !== 0;
             });
             el.className = $.trim(classes.join(" "));
         });
+
+        elemt.addClass(additionalClass);
     };
+
+
 
     /* 回傳以prefix開頭的class拿掉以prefix開頭後的文字*/
     function returnClassNameWithFilter(elemt, prefix) {
         var arr;
-        elemt.each(function(i, el) {
-            arr = el.className.split(" ").filter(function(c) {
+        elemt.each(function (i, el) {
+            arr = el.className.split(" ").filter(function (c) {
                 return c.lastIndexOf(prefix, 0) == 0;
             });
         });
 
-        $.each(arr, function(index, value) {
+        $.each(arr, function (index, value) {
             arr[index] = value.replace(prefix, "");
         })
         return arr;
@@ -192,7 +197,7 @@ var simpleHide = simpleHide || {};
     }
 
     function maxlengthInpout(el, num) {
-        el.on('keyup', function() {
+        el.on('keyup', function () {
             //get the limit from maxlength attribute  
             var limit = num;
             //get the current text inside the textarea  
@@ -200,7 +205,7 @@ var simpleHide = simpleHide || {};
             //count the number of characters in the text  
             var chars = text.length;
 
-            console.log(chars);
+            // console.log(chars);
             //check if there are more characters then allowed  
             if (chars > limit) {
                 //and if there are use substr to get the text before the limit  
@@ -257,12 +262,12 @@ var simpleHide = simpleHide || {};
         return element;
     };
 
-   function shareToLine(s) {
+    function shareToLine(s) {
         var element = getAtagElement();
         element.href = 'http://line.naver.jp/R/msg/text/?' + encodeURIComponent(s);
-        
+
         element.click();
-        
+
     }
 
     function pageScrollAni(top) {
@@ -317,6 +322,7 @@ var simpleHide = simpleHide || {};
     function windoePosTop() {
         return typeof window.pageYOffset != 'undefined' ? window.pageYOffset : document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ? document.body.scrollTop : 0;
     }
+
     function addSwipeUpDownEvent(el, upFunc, downFunc) {
         // var touchObj = document.getElementById("index_banner_swipe");
         var start_y;
@@ -329,7 +335,7 @@ var simpleHide = simpleHide || {};
 
         function touchStart(event) {
             // console.log(event);
-            
+
             if (event.targetTouches.length != 1) {
                 return false;
             } //單點觸控
@@ -338,7 +344,7 @@ var simpleHide = simpleHide || {};
         }
 
         function touchMove(event) {
-            if($('.checkSty .lighttbox').length>0){
+            if ($('.checkSty .lighttbox').length > 0) {
                 return
             }
 
@@ -370,11 +376,11 @@ var simpleHide = simpleHide || {};
         var timer = null;
 
 
-        console.log(el);
-        
+        // console.log(el);
 
 
-        el.mousewheel(function(event) {
+
+        el.mousewheel(function (event) {
             // console.log(event.deltaX, event.deltaY, event.deltaFactor);
 
             if (timer) {
@@ -382,7 +388,7 @@ var simpleHide = simpleHide || {};
                 timer = null;
             }
 
-            timer = setTimeout(function() {
+            timer = setTimeout(function () {
                 // console.log('done');
                 timer = null;
                 scrollable = true;
@@ -396,7 +402,7 @@ var simpleHide = simpleHide || {};
                 scrollable = false;
             }
 
-            if($('.checkSty .lighttbox').length>0){
+            if ($('.checkSty .lighttbox').length > 0) {
                 return
             }
 
@@ -427,17 +433,18 @@ var simpleHide = simpleHide || {};
     function scrollReachEnd(el) {
         return (el.scrollTop() + el.innerHeight() >= el[0].scrollHeight)
     }
+
     function scrollReachTop(el) {
-        return (el.scrollTop() ==0)
+        return (el.scrollTop() == 0)
     }
 
 
-    function checkIdle(delay,func,func2) {
+    function checkIdle(delay, func, func2) {
         idleTimer = null;
         idleState = false;
         idleWait = delay;
 
-        $('*').bind('touchend touchmove touchstart', function() {
+        $('*').bind('touchend touchmove touchstart', function () {
 
 
             clearTimeout(idleTimer);
@@ -448,7 +455,7 @@ var simpleHide = simpleHide || {};
 
             idleState = false;
 
-            idleTimer = setTimeout(function() {
+            idleTimer = setTimeout(function () {
 
                 // Idle Event
                 func();
@@ -469,8 +476,26 @@ var simpleHide = simpleHide || {};
         }
         element.click();
     }
-    ChungTool.openGoogleApp = openGoogleApp;
+
+    function getCursorPosition(e) {
+        var posx = 0;
+        var posy = 0;
+        if (!e) var e = window.event;
+        if (e.pageX || e.pageY) {
+            posx = e.pageX - document.documentElement.scrollLeft - document.body.scrollLeft;
+            posy = e.pageY - document.documentElement.scrollTop - document.body.scrollTop;
+        } else if (e.clientX || e.clientY) {
+            posx = e.clientX;
+            posy = e.clientY;
+        }
     
+        return [posx, posy];
+    }
+
+    ChungTool.getCursorPosition = getCursorPosition;
+
+    ChungTool.openGoogleApp = openGoogleApp;
+
     ChungTool.checkIdle = checkIdle;
     ChungTool.scrollReachTop = scrollReachTop;
     ChungTool.scrollReachEnd = scrollReachEnd;

@@ -51,7 +51,7 @@ html,body
 	margin-right: 15px
 	vertical-align: text-top
 	
-#header
+#header-msi
 	.logo
 		+bg('logo_m.png')
 		position: fixed
@@ -66,12 +66,12 @@ html,body
 			+dTime(.6s)
 			+opacity(0)
 			margin-left: 100px
-		&.gs66
+		&.with_pro1
 			&:before
 				+opacity(1)
 				+bg('logo1.png')
 				margin-left: 20px
-		&.ge66
+		&.with_pro2
 			&:before
 				+opacity(1)
 				+bg('logo2.png')
@@ -204,27 +204,6 @@ html,body
 .proPageHeader
 	position: fixed
 	z-index: 10	
-	&.proPageHeader2
-		.menuBtn
-			+bg('menuBtn2.png')
-			&:hover
-				border: 1px solid rgba($c2,.5)
-		.sideNav
-			background-color: $c2
-			color: $c2
-			.smItem
-				&:before
-					background-color: $c2
-				&:after
-					border: 1px solid $c2
-				
-
-		.scrollBtn
-			+bg('downBtn2.png')
-			&.top 
-				+bg('topBtn2.png')
-
-
 	.scrollBtn
 		position: fixed
 		left: 50%
@@ -331,12 +310,7 @@ html,body
 		right: 25px
 		cursor: pointer
 		+dTime(.1s)
-		&:hover
-			+scale(.95)
-		&.goPro2
-			+bg('pageBtn1.png')
-		&.goPro1
-			+bg('pageBtn2.png')
+		+bg('pageBtn1.png')
 
 	.scrollBtn
 		position: fixed
@@ -348,82 +322,104 @@ html,body
 		&.top 
 			+bg('topBtn.png')
 
-.subMenuPop
-	+fullPage
-	position: fixed
-	z-index: 50
-	background-color: black
-	display: flex
-	justify-content: center
-	align-items: center
-	color: white
-	flex-direction: column
-	left: 100%
-	+dTime(.3s)
-	&.active
-		left: 0
-		+dTime
-	.container
-		.title
-			+bg('p1_1_title.png')
-			margin-bottom: 40px
-		ul 
-			li 
-				text-align: center
-				font-size: 2rem
-				padding: 1em 
-				cursor: pointer
-				position: relative
-				display: block
-				&:after
-					width: 0%			
-					position: absolute
-					bottom: 0					
-					height: 1px
-					background-color: $c1
-					left: 50%
-					+dTime(.3s)
-					content: ''
-					
-				&:hover		
-					&:after	
-						left: 0
-						width: 100%
-
-	.clozBtn
-		+bg('clozBtn.png')
-		position: absolute
-		top: 25px	
-		right: 25px
-		cursor: pointer
+	.subMenuPop
+		+fullPage
+		position: fixed
+		z-index: 50
+		background-color: black
+		display: flex
+		justify-content: center
+		align-items: center
+		color: white
+		flex-direction: column
+		left: 100%
 		+dTime(.3s)
-		border: 1px solid transparent
-		&:hover
-			border: 1px solid rgba($c1,.5)
-
-
-	&.smp2
+		&.active
+			left: 0
+			+dTime
 		.container
 			.title
-				+bg('p2_1_title.png')
+				+bg('p1_1_title.png')
+				margin-bottom: 40px
 			ul 
 				li 
+					text-align: center
+					font-size: 2rem
+					padding: 1em 
+					cursor: pointer
+					position: relative
+					display: block
 					&:after
-						background-color: $c2
+						width: 0%			
+						position: absolute
+						bottom: 0					
+						height: 1px
+						background-color: $c1
+						left: 50%
+						+dTime(.3s)
+						content: ''
+						
+					&:hover		
+						&:after	
+							left: 0
+							width: 100%
+
 		.clozBtn
-			+bg('clozBtn2.png')
+			+bg('clozBtn.png')
+			position: absolute
+			top: 25px	
+			right: 25px
+			cursor: pointer
+			+dTime(.3s)
+			border: 1px solid transparent
+			&:hover
+				border: 1px solid rgba($c1,.5)
+
+
+			
+
+	&.proPageHeader_2
+		.menuBtn
+			+bg('menuBtn2.png')
 			&:hover
 				border: 1px solid rgba($c2,.5)
+		.sideNav
+			background-color: $c2
+			color: $c2
+			.smItem
+				&:before
+					background-color: $c2
+				&:after
+					border: 1px solid $c2
+				
 
-		.goLimited
-			+bg('p3_title.png')
-			cursor: pointer
-			display: block
-			margin: 0 auto
-			margin-top: 30px
-			&:hover
-				+animation(light 0.1s infinite)
+		.scrollBtn
+			+bg('downBtn2.png')
+			&.top 
+				+bg('topBtn2.png')
+		.pageBtn
+			+bg('pageBtn2.png')
+		.subMenuPop
+			.container
+				.title
+					+bg('p2_1_title.png')
+				ul 
+					li 
+						&:after
+							background-color: $c2
+			.clozBtn
+				+bg('clozBtn2.png')
+				&:hover
+					border: 1px solid rgba($c2,.5)
 
+			.goLimited
+				+bg('p3_title.png')
+				cursor: pointer
+				display: block
+				margin: 0 auto
+				margin-top: 30px
+				&:hover
+					+animation(light 0.1s infinite)
 
 .lookPage
 	+fullPage
