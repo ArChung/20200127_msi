@@ -1,0 +1,318 @@
+html,body 
+	width: 100%
+	height: 100%
+	background-color: black
+	color: white
+
+$c3: #bc6d28
+
+@keyframes light
+	0%
+		+opacity(1)
+	50%
+		+opacity(.8)
+	100%
+		+opacity(1)
+
+#header
+	.logo
+		+bg('logo_m.png')
+		position: fixed
+		top: 30px
+		left: 30px
+		z-index: 10
+	.menuBtn
+		position: fixed
+		top: 30px
+		right: 30px
+		z-index: 10
+		cursor: pointer
+		+bg('limited/mBtn.png')
+		+dTime(.3s)
+		border: 1px solid rgba($c3,0)
+		&:hover
+			border: 1px solid rgba($c3,.5)
+
+	
+.subMenuPop
+	+fullPage
+	position: fixed
+	z-index: 50
+	background-color: $c3
+	display: flex
+	justify-content: center
+	align-items: center
+	color: white
+	flex-direction: column
+	left: 100%
+	+dTime(.3s)
+	&.active
+		left: 0
+		+dTime
+	.container
+		
+		.title
+			+bg('limited/mTitle.png')
+			margin: 0 auto
+		ul 
+			margin-top: 40px
+			li 
+				text-align: center
+				font-size: 2rem
+				padding: 1em 
+				cursor: pointer
+				position: relative
+				display: block
+				&:after
+					width: 0%			
+					position: absolute
+					bottom: 0					
+					height: 1px
+					background-color: white
+					left: 50%
+					+dTime(.3s)
+					content: ''
+					
+				&:hover		
+					&:after	
+						left: 0
+						width: 100%
+		.smBtn1
+			+bg('limited/mBtn2.png')
+			cursor: pointer
+			display: block
+			margin: 0 auto
+			margin-top: 50px
+			&:hover
+				+animation(light 0.1s infinite)
+	.clozBtn
+		+bg('cloz.png') 
+		position: absolute
+		top: 25px	
+		right: 25px
+		cursor: pointer
+		+dTime(.3s)
+		border: 1px solid transparent
+		&:hover
+			border: 1px solid rgba($c1,.5)
+
+.mainContainer
+	position: relative
+	.bgWrap
+		width: 100%
+		> *
+			width: 100%
+			height: 684px 
+			// +coverBg
+			overflow: hidden
+			img 
+				width: 100%
+		// .p1
+		// 	+bgi('limited/bg1.jpg')
+		// .p2
+		// 	+bgi('limited/bg2.jpg')
+		.p1
+			+pad
+				height: auto
+				+aspect-ratio(1365,681)
+				.simpleParallax 
+					+fullPage
+					position: absolute
+		.p2			
+			+phone 
+				img
+					display: none
+				+bgi('limited/bg2.jpg')
+				+coverBg
+				+aspect-ratio(1365,2200) 
+				height: auto
+		.p3
+			background-color: #000
+			height: 1050px
+			+pad
+				+aspect-ratio(1384,1050)
+				height: auto
+			+phone 
+				+aspect-ratio(1365,2200) 
+				height: auto
+		.p4
+			background-color: #bb5d1e
+			+pad
+				+aspect-ratio(1384,684)
+				height: auto
+			+phone 
+				+aspect-ratio(1365,3700) 
+				height: auto
+	.container
+		// position: absolute
+		// top: 0	
+		// left: 0
+		// width: 100%
+		.page
+			// width: 100%
+			// height: 684px 
+			// position: relative
+			// padding: 0 30px
+			// // +coverBg
+			.pageContainer
+				max-width: 1200px
+			// 	width: 100%
+			// 	height: 684px
+			// 	position: relative
+				
+
+			&.p1
+				.bg
+					+fullPage
+					position: absolute
+					img 
+						max-width: none
+						width: 100%
+				.pageContainer
+					height: 684px
+					position: relative
+					margin: 0 auto
+					.title
+						+bg('limited/index_title.png')
+						position: absolute
+						right: 50px
+						bottom: 20%
+				+pad
+					.pageContainer
+						height: auto
+						+aspect-ratio(1365,681)
+						.title
+							+scale(.8)
+				// 	.simpleParallax 
+				// 		+fullPage
+				// 		position: absolute
+						
+						
+
+			&.p2
+				position: relative
+				background-color: #000
+				padding-bottom: 50px
+				&:before
+					content: ''
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 684px
+					+coverBg
+					+bgi('limited/bg2.jpg')
+					+phone 
+						height: 900px
+				&:after
+					content: ''
+					position: absolute
+					bottom: 0
+					left: 0
+					width: 100%
+					height: 684px
+					background-color: #bb5d1e
+					z-index: 0
+				+phone 
+					height: auto
+				.rightCBg
+					position: absolute
+					bottom: 50px
+					left: 40%
+					z-index: 1
+				.pageContainer
+					padding: 0 32px
+					display: flex
+					flex-wrap: wrap
+					justify-content: space-between
+					position: relative
+					z-index: 3
+					margin: 0 auto
+
+					.subSection
+						width: 45%
+						flex-shrink: 0
+						+phone
+							width: 95%
+					.manBox
+						margin-top: 180px
+						
+						.mContent
+							display: flex
+							margin-top: 25px
+							.pic
+								margin-right: 40px
+								flex-grow: 0
+								flex-shrink: 0
+							
+							.txt
+								padding-top: 20px
+								font-size: 1.6rem
+								text-align: left
+								// padding-right: 45px
+						+phone
+							margin-top: 50px
+							order: 2
+							.mTitle
+								img 
+									display: block
+									margin: 0 auto
+							.mContent
+								padding-left: 32px
+								margin-top: 40px
+								.txt
+									// padding-right: 0
+									font-size: 2.4rem
+									padding: 0
+					.picWrap
+						margin-top: -520px
+						display: flex
+						flex-direction: column
+						> *
+							margin-bottom: 38px
+						+pad
+							margin-top: -250px
+						+phone
+							margin-top: 40px
+							margin-right: auto
+							margin-left: auto
+							padding: 0 32px
+							order: 5
+							img 
+								max-width: none
+								width: 100%
+					.proWrap
+						display: flex
+						flex-direction: column
+						align-items: flex-end
+						position: relative
+						z-index: 3
+						margin-top: -80px
+						> *
+							margin-bottom: 0px
+						+pad
+							margin-top: -40px
+						+phone
+							// margin-top: 0
+							order: 1
+							margin-right: auto
+							margin-left: auto
+					.deSection
+						+phone
+							order: 3
+					.deTxt	
+						margin-top: 50px
+						z-index: 3
+						position: relative
+						+phone
+							margin-right: auto
+							margin-left: auto
+					.dePic
+						position: relative
+						z-index: 3
+						margin-top: 50px
+						overflow: hidden
+						+phone
+							margin-right: auto
+							margin-left: auto
+

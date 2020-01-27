@@ -1,0 +1,36 @@
+// break point
+$pad: 1400px
+$phone: 768px
+
+$margin_small: 15px
+$margin_big: 30px
+$grayTxtColor: #ccc
+
+$c1: #7aceff
+$c2: #ee94ff
+
+=fullPage
+	width: 100%
+	height: 100%
+	position: absolute
+	top: 0
+	left: 0
+	overflow: hidden
+
+=ratio($pic-name)
+	+aspect-ratio(image-width("../images/#{$pic-name}"),image-height("../images/#{$pic-name}"))
+	+bgi($pic-name)
+		background-size: contain
+		background-repeat: no-repeat
+
+=sectionBtn($w,$l,$t,$kv)
+	position: absolute
+	top: ($t * 1px) / image-height("../images/#{$kv}") * 100%
+	left: ($l * 1px) / image-width("../images/#{$kv}") * 100%
+	width: ($w * 1px) / image-width("../images/#{$kv}") * 100%
+	display: block
+	&:hover
+		+opacity(.9)
+
+
+

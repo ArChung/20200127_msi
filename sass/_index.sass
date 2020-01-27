@@ -1,0 +1,667 @@
+html,body 
+	width: 100%
+	height: 100%
+	background-color: black
+	overflow: hidden
+@keyframes light 
+	0%
+		+opacity(1)
+	50%
+		+opacity(.8)
+	100%
+		+opacity(1)
+
+@keyframes light2
+	0%
+		+opacity(1)
+	50%
+		+opacity(0)
+	100%
+		+opacity(1)
+@keyframes target
+	0%
+		+scale(1)
+	50%
+		+scale(.95)
+	100%
+		+scale(1)
+.page
+	+fullPage
+.bgEdge
+	+fullPage
+	+bgi('blackEdge.png')
+	background-size: 100% 100%
+
+=index_ratio($pic-name,$top,$left,$kvw)
+	+aspect-ratio(image-width("../images/#{$pic-name}"),image-height("../images/#{$pic-name}"))
+	width: image-width("../images/#{$pic-name}") / ($kvw * 1px) * 100%
+	+bgi($pic-name)
+	background-size: contain
+	background-repeat: no-repeat 
+	top: 50%
+	left: ($left) / $kvw * 100%
+	position: absolute
+
+.mainContainer
+	+fullPage
+	overflow: hidden
+.icon-lock
+	+bg('lock.png')
+	display: inline-block
+	margin-right: 15px
+	vertical-align: text-top
+	
+#header
+	.logo
+		+bg('logo_m.png')
+		position: fixed
+		top: 30px
+		left: 30px
+		z-index: 10
+		&:before
+			content: ''
+			position: absolute
+			left: 100%
+			top: 0
+			+dTime(.6s)
+			+opacity(0)
+			margin-left: 100px
+		&.gs66
+			&:before
+				+opacity(1)
+				+bg('logo1.png')
+				margin-left: 20px
+		&.ge66
+			&:before
+				+opacity(1)
+				+bg('logo2.png')
+				margin-left: 20px
+				
+			
+
+#index
+	.bg
+		+fullPage
+		> *
+			+fullPage
+			.pic 
+				+fullPage
+				+containBg 
+
+		.bg1
+			.pic
+				+bgi('index_bg.jpg')
+		.bg2
+			.pic
+				+bgi('index_bg2.png') 
+		.bg3
+			.pic
+				+bgi('index_bg3.png')
+		.bg4
+			.pic
+				+bgi('index_bg4.png')
+		.btn_l
+			.pic
+				+bgi('index_r1.png')
+			// &.btn_l3
+			// 	.pic 
+			// 		+animation(light 0.6s infinite)
+
+		.btn_r
+			.pic
+				+bgi('index_r2.png')
+			// &.btn_r3
+			// 	.pic 
+			// 		+animation(light 0.6s infinite)
+		.pc_r
+			.pic
+				+bgi('index_p2.png')
+		.pc_r_bg
+			.pic
+				+bgi('index_p2_bg.png')
+		.pc_l
+			.pic
+				+bgi('index_p1.png')
+		.t1
+			.pic
+				+bgi('index_t1.png')
+		.t2
+			.pic
+				+bgi('index_t2.png')
+		.t3
+			.pic
+				+bgi('index_t3.png')
+
+	.lights
+		.ll
+			position: absolute
+			left: 0
+			top: 0
+			background-size: 100% 100%
+			height: 100%
+			width: 300px
+			+bgi('index_ll.png')
+			+opacity(0)
+			+phone
+				display: none
+		.lr
+			position: absolute
+			right: 0
+			top: 0
+			background-size: 100% 100%
+			height: 100%
+			width: 300px
+			+bgi('index_lr.png')
+			+opacity(0)
+			+phone
+				display: none
+
+	.btns
+		+fullPage
+		z-index: 5
+		> *
+			cursor: pointer
+			height: 100%
+			width: 40%
+			position: absolute
+			top: 0
+		.lBtn
+			left: 0
+		.rBtn
+			right: 0
+		.txt
+			display: none
+		+phone 
+			> *
+				// top: auto
+				// bottom: 20px
+				width: 50%
+				// height: 100px
+				// border-radius: 20px
+				.txt
+					position: absolute
+					bottom: 0
+					width: 96%
+					margin: 2%
+					height: 100px
+					color: white
+					display: block
+					text-align: center
+					line-height: 100px
+					font-size: 2.8rem
+					font-weight: bold
+					border-radius: 20px
+			.lBtn
+				.txt
+					background-color: #2386c0
+			.rBtn
+				.txt
+					background-color: #b930d3
+
+			
+
+
+.proPageHeader
+	position: fixed
+	z-index: 10	
+	&.proPageHeader2
+		.menuBtn
+			+bg('menuBtn2.png')
+			&:hover
+				border: 1px solid rgba($c2,.5)
+		.sideNav
+			background-color: $c2
+			color: $c2
+			.smItem
+				&:before
+					background-color: $c2
+				&:after
+					border: 1px solid $c2
+				
+
+		.scrollBtn
+			+bg('downBtn2.png')
+			&.top 
+				+bg('topBtn2.png')
+
+
+	.scrollBtn
+		position: fixed
+		left: 50%
+		margin-left: -53px	
+		bottom: 0
+		+bg('downBtn.png')
+		cursor: pointer
+		&.top 
+			+bg('topBtn.png')
+	.menuBtn
+		+bg('menuBtn.png')
+		position: fixed
+		top: 30px
+		right: 30px
+		cursor: pointer
+		z-index: 10
+		+dTime(.3s)
+		border: 1px solid transparent
+		&:hover
+			border: 1px solid rgba($c1,.5)
+	.sideNav
+		position: fixed
+		z-index: 10
+		top: 50%
+		height: 60%
+		max-height: 450px
+		transform: translateY(-50%)
+		left: 60px
+		width: 1px
+		background-color: $c1
+		color: $c1
+		display: flex
+		flex-direction: column
+		align-items: space-between
+		justify-content: space-between
+		+phone 
+			left: 15px
+		.smItem
+			position: relative
+			cursor: pointer
+			
+			&:before
+				content: ''
+				width: 6px
+				height: 6px
+				background-color: $c1
+				position: absolute
+				left: -3px
+				top: -3px
+			&:after
+				content: ''
+				width: 1px
+				height: 1px
+				border: 1px solid $c1
+				position: absolute
+				left: -2px
+				top: -2px
+				+dTime(.3s)
+			.txt	
+				white-space: nowrap
+				position: absolute
+				left: 0px
+				top: -11px
+				+opacity(0)
+				+dTime(.3s)
+			.hitArea
+				width: 50px
+				height: 50px
+				position: absolute
+				top: 50%
+				left: 50%
+				margin-top: -25px
+				margin-left: -25px
+				// background-color: #fff
+		
+
+			&:hover
+				&:after
+					width: 12px
+					height: 12px
+					left: -6px
+					top: -6px
+				.txt	
+					left: 20px
+					+opacity(1)
+			&.active
+				&:after
+					width: 12px
+					height: 12px
+					left: -6px
+					top: -6px
+				// .txt	
+				// 	left: 20px
+				// 	+opacity(1)
+			.icon-lock
+				margin-left: 5px
+				+scale(.7)
+				margin-top: -3px
+
+	.pageBtn
+		position: fixed
+		z-index: 10
+		bottom: 25px
+		right: 25px
+		cursor: pointer
+		+dTime(.1s)
+		&:hover
+			+scale(.95)
+		&.goPro2
+			+bg('pageBtn1.png')
+		&.goPro1
+			+bg('pageBtn2.png')
+
+	.scrollBtn
+		position: fixed
+		left: 50%
+		margin-left: -53px	
+		bottom: 0
+		+bg('downBtn.png')
+		cursor: pointer
+		&.top 
+			+bg('topBtn.png')
+
+.subMenuPop
+	+fullPage
+	position: fixed
+	z-index: 50
+	background-color: black
+	display: flex
+	justify-content: center
+	align-items: center
+	color: white
+	flex-direction: column
+	left: 100%
+	+dTime(.3s)
+	&.active
+		left: 0
+		+dTime
+	.container
+		.title
+			+bg('p1_1_title.png')
+			margin-bottom: 40px
+		ul 
+			li 
+				text-align: center
+				font-size: 2rem
+				padding: 1em 
+				cursor: pointer
+				position: relative
+				display: block
+				&:after
+					width: 0%			
+					position: absolute
+					bottom: 0					
+					height: 1px
+					background-color: $c1
+					left: 50%
+					+dTime(.3s)
+					content: ''
+					
+				&:hover		
+					&:after	
+						left: 0
+						width: 100%
+
+	.clozBtn
+		+bg('clozBtn.png')
+		position: absolute
+		top: 25px	
+		right: 25px
+		cursor: pointer
+		+dTime(.3s)
+		border: 1px solid transparent
+		&:hover
+			border: 1px solid rgba($c1,.5)
+
+
+	&.smp2
+		.container
+			.title
+				+bg('p2_1_title.png')
+			ul 
+				li 
+					&:after
+						background-color: $c2
+		.clozBtn
+			+bg('clozBtn2.png')
+			&:hover
+				border: 1px solid rgba($c2,.5)
+
+		.goLimited
+			+bg('p3_title.png')
+			cursor: pointer
+			display: block
+			margin: 0 auto
+			margin-top: 30px
+			&:hover
+				+animation(light 0.1s infinite)
+
+
+.lookPage
+	+fullPage
+	.container
+		display: flex
+		flex-direction: column 
+		align-items: center
+		justify-content: center
+		+fullPage
+		.swiperWrap
+			width: 65%
+			max-width: 900px
+			height: 60%
+			max-height: 500px
+			position: relative
+		.gallery-top
+			width: 100%
+			height: 100%
+			.swiper-wrapper
+				.swiper-slide
+					+containBg
+			.swiper-button-next
+				+bg('arr_next.png')
+				background-size: auto
+				
+			.swiper-button-prev
+				+bg('arr_prev.png')
+				background-size: auto
+				
+		.txt
+			+bg('p1_1_title.png')
+			position: absolute
+			bottom: 20px
+			right: 75%
+		.tab
+			display: flex
+			width: 100%
+			justify-content: center
+			.tabItem
+				+aspect-ratio(627,402)
+				+containBg
+				width: 160px
+				cursor: pointer
+				+dTime(.3s)
+				&:hover 
+					+scale(.9)
+	+phone 
+		.container
+			.swiperWrap 
+				width: 100%
+				height: 70%
+			.gallery-top
+				.swiper-button-next
+					right: 30px
+				.swiper-button-prev
+					left: 30px
+			.tab
+				flex-wrap: wrap
+				justify-content: space-around
+				width: 90%
+				margin: 0 auto
+				margin-top: 40px
+				.tabItem
+					width: 33%
+					margin-bottom: 30px
+					height: 110px
+					
+
+	&#pro1_sp0
+		.bg
+			+fullPage
+			+scale(1.1)
+			#p1_1_scene
+				+fullPage 
+				> * 
+					+fullPage
+					.pic 
+						+fullPage
+						+coverBg
+			.bg1
+				.pic
+					+bgi('p1_1_bg.jpg')
+					background-position: 50% 100%
+			.bg2
+				.pic
+					+bgi('p1_1_bg2.png')
+					
+			.bg3
+				.pic
+					+bgi('p1_1_bg3.png')
+					
+			.bg4
+				.pic
+					+bgi('p1_1_line1.png')
+					
+			.bg5
+				.pic
+					+bgi('p1_1_line2.png')
+	&#pro2_sp0
+		.bg
+			+fullPage
+			+scale(1.1)
+			position: relative
+			#p2_1_scene
+				+fullPage 
+				> * 
+					+fullPage
+					.pic 
+						+fullPage
+			.bg1
+				.pic
+					+bgi('p2_1_bg1.jpg')
+					+coverBg
+			.bg2
+				.pic
+					+bgi('p2_1_bg3.png')
+					+coverBg
+			.bg3
+				.pic 
+					+bgi('p2_1_bg4.png')
+					+coverBg
+					+animation(light 0.1s infinite)
+			.bg4
+				.pic
+					+bgi('p2_1_bg2.png')
+					+coverBg
+		
+			+phone 
+				+scale(1)
+				.bg2
+					.pic
+						+containBg
+						background-position: 50% 20%
+				.bg3
+					.pic
+						+containBg
+						background-position: 50% 20%
+				.bg4
+					.pic
+						+scale(1.2)
+		
+			
+		.container	 
+			.gallery-top
+				.swiper-button-next
+					+bg('arr_next2.png')
+					
+				.swiper-button-prev
+					+bg('arr_prev2.png')
+				.swiper-slide.s1.swiper-slide-active
+					.light
+						+fullPage
+						+bgi('p2_1_pro1_light.png')
+						+containBg
+						+animation(light2 2s infinite) 
+
+			.target 
+				position: absolute
+				left: 87%
+				top: 50%
+				margin-top: -50px
+				cursor: pointer
+				z-index: 5
+				+phone 
+					top: 30%
+				.pic
+					display: block
+					text-decoration: none
+					+bg('target.png')
+					+animation(target 0.3s infinite)
+					&:hover
+						+opacity(.8)		
+			.txt
+				+bg('p2_1_title.png')
+			.tab
+				.tabItem
+					+aspect-ratio(702,402)
+					
+			
+
+.formPage
+	// +fullPage
+	// .bg
+	// 	+fullPage
+	// 	.bg1
+	// 		+fullPage
+	// 		.pic
+	// 			+fullPage
+	// 			+coverBg
+
+	&#pro1_sp1 
+		.bg
+			.bg1
+				.pic
+					+bgi('formBg1.jpg')
+					.txt 
+						+aspect-ratio(440,54)
+						position: absolute
+						+coverBg
+						bottom: 16%
+						left: 50%
+						+transform(translateX(-50%))
+						+bgi('formBgt1.png')
+						width: 40%
+						max-width: 440px
+						+phone 
+							display: none
+	&#pro2_sp1 
+		.bg
+			.bg1
+				.pic
+					+bgi('formBg2.jpg') 
+					.t1
+						+aspect-ratio(458,46)
+						position: absolute
+						width: 40%
+						+bgi('pro1FromTxt1.png')
+						+coverBg
+						bottom: 18%
+						left: 50%
+						+transform(translateX(-50%))
+						max-width: 458px
+						+phone 
+							display: none
+					// .t2
+					// 	+aspect-ratio(364,49)
+					// 	position: absolute
+					// 	width: 40%
+					// 	+bgi('p2_1_title.png')
+					// 	+coverBg
+					// 	bottom: 18%
+					// 	left: 50%
+					// 	+transform(translateX(-50%))
+					// 	max-width: 364px
+					// 	+phone 
+					// 		display: none
+	
+
+
+
+

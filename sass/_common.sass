@@ -1,0 +1,382 @@
+body
+	font-family: "微軟正黑體", "Microsoft JhengHei", "STHeiti Light", "STHeiti", Arial, sans-serif!important
+
+.inp
+	position: relative
+	// margin: auto
+	width: 100%
+	// max-width: 280px
+	display: block
+	.label
+		position: absolute
+		top: 16px
+		left: 0
+		color: #9098A9
+		font-weight: 500
+		transform-origin: 0 0
+		transition: all .2s ease
+	.border
+		position: absolute
+		bottom: 0
+		left: 0
+		height: 2px
+		width: 100%
+		background: #0077FF
+		transform: scaleX(0)
+		transform-origin: 0 0
+		transition: all .15s ease
+	input
+		-webkit-appearance: none
+		width: 100%
+		border: 0
+		font-family: inherit
+		padding: 12px 0
+		height: 48px
+		font-size: 16px
+		font-weight: 500
+		border-bottom: 2px solid #C8CCD4
+		background: none
+		border-radius: 0
+		color: white
+		transition: all .15s ease
+		+phone 
+			height: 70px
+		&:hover
+			background: rgba(#223254,.03)
+		&:not(:placeholder-shown)
+			+ span
+				color: #5A667F
+				transform: translateY(-26px) scale(.75)
+		&:focus
+			background: none
+			outline: none
+			+ span
+				color: #0077FF
+				transform: translateY(-26px) scale(.75)
+				+ .border
+					transform: scaleX(1)
+.inp_checkbox
+	display: inline-block
+	position: relative
+	padding-left: 35px
+	margin-bottom: 12px
+	cursor: pointer
+	-webkit-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+	input 
+		position: absolute
+		opacity: 0
+		cursor: pointer
+		height: 0
+		width: 0
+		&:checked ~ .checkmark
+			background-color: #0077FF
+			&:after
+				display: block
+	.checkmark
+		position: absolute
+		top: 0
+		left: 0
+		height: 25px
+		width: 25px
+		background-color: #eee
+		&:after
+			content: ""
+			position: absolute
+			display: none
+			left: 9px
+			top: 5px
+			width: 5px
+			height: 10px
+			border: solid white
+			border-width: 0 3px 3px 0
+			-webkit-transform: rotate(45deg)
+			-ms-transform: rotate(45deg)
+			transform: rotate(45deg)
+
+
+
+@keyframes rotateArr
+	0%
+		+rotate(4deg)
+	50%
+		+rotate(-4deg)
+	100%
+		+rotate(4deg)
+
+.roPop
+	position: fixed
+	width: 100%
+	height: 100%
+	top: 0	
+	left: 0
+	background-color: #000
+	z-index: 50
+
+	.roPopContainer
+		> *
+			position: absolute
+			top: 50%
+			left: 50%
+			margin-top: -375px
+			margin-left: -375px
+			width: 750px
+			height: 750px
+	.ro1
+		background-image: url(../images/rotate1.png)
+	.ro2
+		background-image: url(../images/rotate2.png)
+		+animation(rotateArr .8s .2s infinite)
+
+.popPage
+	position: fixed
+	width: 100%
+	height: 100%
+	top: 0	
+	left: 0
+	z-index: 40
+	display: flex
+	justify-content: center
+	align-items: center
+	padding: 40px
+	.bg	
+		position: absolute
+		width: 100%
+		height: 100%
+		top: 0	
+		left: 0
+		background-color: rgba(black,0.7)
+	.container
+		width: 100%
+		max-width: 900px
+		height: 70%
+		min-height: 400px
+		+bgi('frameBg.png')
+		background-size: 100% 100%
+		position: relative
+		padding: 80px 40px 30px 
+		.clozBtn
+			+bg('cloz.png')
+			position: absolute
+			top: 15px	
+			right: 15px
+			cursor: pointer
+			// +dTime(.3s)
+				border: 1px solid transparent
+				&:hover
+					border: 1px solid rgba($c1,.5)
+		.p_content
+			position: absolute
+			top: 150px
+			bottom: 80px
+			left: 80px
+			right: 80px
+			overflow-y: scroll
+		// .formBtn
+		// 	position: absolute
+		// 	bottom: 50px
+		// 	background: none
+		// 	-webkit-appearance: none
+		// 	width: 300px
+		// 	background-color: #4f4f4f
+		// 	border: 0
+		// 	height: 60px
+		// 	color: white
+		// 	font-size: 20px
+		// 	letter-spacing: .1em
+		// 	font-weight: bold
+		// 	text-align: center
+		// 	line-height: 60px
+		// 	&:hover
+		// 		background-color: #686868
+@keyframes light
+	0%
+		+opacity(1)
+	50%
+		+opacity(.8)
+	100%
+		+opacity(1)
+
+.loadingPop
+	+fullPage
+	position: fixed
+	background-color: black
+	display: flex
+	justify-content: center
+	align-items: center
+	z-index: 45	
+	.wTxt
+		+animation(light 0.1s infinite)
+
+		
+
+
+
+.formPage
+	position: relative
+	width: 100%
+	height: 100%
+	max-height: 1000px
+	background-color: #000
+	.bg
+		position: absolute
+		top: 0	
+		left: 0
+		width: 50%
+		height: 100%
+		+phone 
+			width: 100%
+		.bg1
+			width: 100%
+			height: 100%
+			.pic
+				width: 100%
+				height: 100%
+				+coverBg
+
+	&.pro3Page
+		.bg
+			.pic
+				+bgi('limited/formBg.jpg')
+				.txt
+					+aspect-ratio(536,162)
+					+coverBg
+					width: 35%
+					position: absolute
+					top: 50%
+					right: 40px
+					+bgi('limited/index_title.png')
+					+phone
+						display: none
+
+	.container
+		position: absolute
+		left: 50%
+		width: 50%
+		height: 100%
+		background-color: rgba(black,0.8)
+		padding: 0 100px
+		.txt
+			font-size: 2.4rem
+		.innerContainer
+			display: flex
+			justify-content: center
+			align-items: center
+			max-width: 100%
+			width: 650px
+			height: 100%
+	+phone 
+		// height: auto
+		// max-height: none
+		padding: 50px
+		// padding-top: 400px
+		display: flex
+		justify-content: center
+		align-items: center
+		max-height: none
+		.container
+			position: relative
+			width: 100%
+			height: auto
+			left: 0
+			padding: 70px 30px
+			.txt
+				font-size: 3rem
+		// form
+		// 	width: 100%
+		// 	max-width: 650px
+		// 	font-size: 16px
+		// 	+phone 
+		// 		font-size: 2.4rem
+		// 	.txt
+		// 		font-size: 2rem
+		// 		+phone 
+		// 			font-size: 2.8rem
+		// 	.ruleBtn
+		// 		text-decoration: underline
+		// 	.submitBtn
+		// 		background: none
+		// 		-webkit-appearance: none
+		// 		width: 100%
+		// 		background-color: #4f4f4f
+		// 		border: 0
+		// 		height: 80px
+		// 		color: white
+		// 		font-size: 20px
+		// 		letter-spacing: .1em
+		// 		font-weight: bold
+		// 		+phone 
+		// 			font-size: 2.8rem
+		// 		&:hover
+		// 			background-color: #686868
+=msi_from($c)
+	.checkSty input[type="checkbox"]:checked + label::before
+		border-color: $c
+	.question-group
+		&.error 
+			color: red
+			h6
+				color: red
+			.checkSty
+				color: red
+		a 
+			color: $c
+			border-bottom: 1px solid  $c
+		
+	.star
+		color: $c
+	.form-send 
+		button
+			background-color: $c
+	.ltbox .btclose button:hover
+		background-color: $c
+	
+
+#msi_form
+	padding: 0
+	padding-top: 40px
+	.question-group 
+		padding-bottom: 15px
+		h6
+			font-size: 18px
+			padding-bottom: 5px
+	.form-send 
+		button
+			width: 100%
+	.checkSty label::before
+		border: #fff 1px solid
+		+phone
+			width: 35px
+			height: 35px
+			flex: 0 0 35px
+			border: #fff 2px solid
+			margin-right: 18px
+			margin-top: 5px
+		
+
+	+phone 
+		.question-group 
+			padding-bottom: 40px
+			font-size: 22px
+			h6
+				font-size: 28px
+		.form-send button 
+			height: 80px
+			font-size: 28px
+	+msi_from(rgb(172, 86, 29))
+
+	&.purple
+		+msi_from(#b930d3)
+	&.blue
+		+msi_from(#2386c0)
+	.ltwp
+		height: 100%
+		overflow-y: scroll
+		.ltbox
+			margin-bottom: 400px
+
+#header
+	border: none
+	padding: 0
